@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="layer/layer.css">
+    <title>progress</title>
+    <style>
+        .wrapper{
+            margin-top: 30px;
+            width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div ng-controller="MainController as vm">
+    <div class="container wrapper">
+        <button type="button" class="layui-btn layui-btn-small" ng-click="vm.doit()">点击弹出提示框</button>
+    </div>
+</div>
+</body>
+
+<script src="angular.js"></script>
+<script src="angular_components.js"></script>
+<script src="alert/alert_service.js"></script>
+<script src="alert/alert_directive.js"></script>
+<script>
+    angular
+        .module('app',['p_components'])
+            .controller('MainController', MainController);
+
+    MainController.$inject = ['$scope', '$rootScope', 'alertService'];
+
+    function MainController($scope, $rootScope, alertService) {
+        var vm = this;
+        vm.doit = function(){
+            alertService.comfirm({
+                title: '提示信息',
+                content: '操作成功！',
+                sure: function(){
+                    alert("您点击了确定");
+                },
+                cancel: function(){
+                    alert("您点击了取消");
+                }
+            })
+        }
+    }
+</script>
+
+</html>
+
+
+
+
