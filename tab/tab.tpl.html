@@ -1,0 +1,13 @@
+<div class="layui-tab layui-tab-card">
+    <ul class="layui-tab-title">
+        <li class=""
+            ng-class="{'layui-this': tabTitle.active, '':!tabTitle.active}"
+            ng-repeat="tabTitle in tabTitleList track by $index"
+            ng-click="changeTabAction($index)">
+            {{tabTitle.title}}
+        </li>
+    </ul>
+    <div class="layui-tab-content" style="min-height: 100px;padding: 10px;">
+        <div ng-transclude></div>
+    </div>
+</div>
